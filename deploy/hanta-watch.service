@@ -1,0 +1,21 @@
+[Unit]
+Description=HANTA WATCH static Next.js export
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/var/www/hanta-watch
+ExecStart=/usr/bin/python3 -m http.server 80 --bind 0.0.0.0 --directory /var/www/hanta-watch
+Restart=always
+RestartSec=3
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

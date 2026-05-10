@@ -1,0 +1,43 @@
+# dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.csr
+*.kubeconfig
+id_rsa*
+id_ed25519*
+ip.txt
+
+# local server state
+*.db
+*.sqlite
+*.sqlite3
+view-counter*
+server/__pycache__/
+__pycache__/
+*.py[cod]
+
+# archives and logs
+*.tgz
+*.tar
+*.tar.gz
+*.zip
+*.log
+npm-debug.log*
+
+# editor and OS files
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,22 @@
+[Unit]
+Description=HANTA WATCH view counter API
+After=network.target
+
+[Service]
+Type=simple
+User=caddy
+Group=caddy
+Environment=HANTA_COUNTER_HOST=127.0.0.1
+Environment=HANTA_COUNTER_PORT=8787
+Environment=HANTA_COUNTER_DIR=/var/lib/hanta-watch
+ExecStart=/usr/bin/python3 /opt/hanta-watch/view_counter.py
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/hanta-watch
+
+[Install]
+WantedBy=multi-user.target
