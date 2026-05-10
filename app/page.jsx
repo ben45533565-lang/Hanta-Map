@@ -1,4 +1,4 @@
-import { HeartPulse } from "lucide-react";
+import { Github, HeartPulse } from "lucide-react";
 import MatrixCanvas from "./components/MatrixCanvas";
 import LiveClock from "./components/LiveClock";
 import MainstreamNews from "./components/MainstreamNews";
@@ -52,6 +52,16 @@ export default function Home() {
         />
       </div>
       <ViewCounter />
+      <a
+        aria-label="Open Hanta-Map GitHub repository"
+        className="github-repo-link"
+        href="https://github.com/timothyericsson/Hanta-Map"
+        rel="noreferrer"
+        target="_blank"
+        title="GitHub repo"
+      >
+        <Github size={20} />
+      </a>
       <header className="site-header">
         <div className="header-left">
           <div className="logo">
