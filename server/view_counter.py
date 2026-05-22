@@ -21,7 +21,7 @@ from urllib.parse import urlparse
 
 HOST = os.environ.get("HANTA_COUNTER_HOST", "127.0.0.1")
 PORT = int(os.environ.get("HANTA_COUNTER_PORT", "8787"))
-DATA_DIR = Path(os.environ.get("HANTA_COUNTER_DIR", "/var/lib/hanta-watch"))
+DATA_DIR = Path(__file__).resolve().parent / "hanta-watch"
 COUNT_FILE = DATA_DIR / "view-counter.txt"
 LOCK_FILE = DATA_DIR / "view-counter.lock"
 UNIQUE_FILE = DATA_DIR / "view-counter-unique-hashes.txt"
