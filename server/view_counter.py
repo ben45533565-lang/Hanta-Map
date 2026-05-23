@@ -19,7 +19,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
-HOST = os.environ.get("HANTA_COUNTER_HOST", "127.0.0.1")
+HOST = os.environ.get("HANTA_COUNTER_HOST", "0.0.0.0")
 PORT = int(os.environ.get("HANTA_COUNTER_PORT", "8787"))
 DATA_DIR = Path(__file__).resolve().parent / "hanta-watch"
 COUNT_FILE = DATA_DIR / "view-counter.txt"
