@@ -652,12 +652,6 @@ class CounterHandler(BaseHTTPRequestHandler):
         pass
 if __name__ == "__main__":
     ensure_store()
-    
-    # Render'ın verdiği portu al, yoksa 10000 kullan
-        render_port = int(os.environ.get("PORT", 10000))
-    
-    print(f"Sunucu zorunlu olarak 0.0.0.0:{render_port} üzerinde baslatiliyor...")
-    
-    # Buradaki HOST değişkeni yerine direkt "0.0.0.0" yazarak localhost inadını kırıyoruz:
-        ThreadingHTTPServer(("0.0.0.0", render_port), CounterHandler).serve_forever()
-
+    render_port = int(os.environ.get("PORT", 10000))
+    print(f"Sunucu zorunlu olarak 0.0.0.0:{render_port} uzerinde baslatiliyor...")
+    ThreadingHTTPServer(("0.0.0.0", render_port), CounterHandler).serve_forever()
