@@ -656,3 +656,18 @@ class CounterHandler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     ensure_store()
     ThreadingHTTPServer((HOST, PORT), CounterHandler).serve_forever()
+# RENDER İÇİN SAHTE PORT DİNLEYİCİSİ (Uyarılardan kurtulmak için)
+import os
+import threading
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+
+def run_dummy_server():
+    # Render varsayılan olarak 10000 portunu kullanır, yoksa 8080 açar
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", port), SimpleHTTPRequestHandler)
+    print(f"--- [Render] Sahte port dinleniyor: {port} ---")
+    server.serve_forever()
+
+# Ana kodunun çalıştığı yere (mevcut kodunun en altına) şu iki satırı ekle:
+threading.Thread(target=run_dummy_server, daemon=True).start()
+
