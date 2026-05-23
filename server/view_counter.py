@@ -653,10 +653,11 @@ class CounterHandler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     ensure_store()
     
-    # Render platformu genellikle dinamik olarak "PORT" değişkenini atar.
-    # Eğer ortamda PORT varsa onu kullanır, yoksa yukarıda tanımlanan varsayılan PORT'u (8787) seçer.
-    render_port = int(os.environ.get("PORT", PORT))
+    # Render'ın verdiği portu al, yoksa 10000 kullan
+        render_port = int(os.environ.get("PORT", 10000))
     
-    print(f"Sunucu {HOST}:{render_port} üzerinde başlatılıyor...")
-    ThreadingHTTPServer((HOST, render_port), CounterHandler).serve_forever()
+    print(f"Sunucu zorunlu olarak 0.0.0.0:{render_port} üzerinde baslatiliyor...")
+    
+    # Buradaki HOST değişkeni yerine direkt "0.0.0.0" yazarak localhost inadını kırıyoruz:
+        ThreadingHTTPServer(("0.0.0.0", render_port), CounterHandler).serve_forever()
 
