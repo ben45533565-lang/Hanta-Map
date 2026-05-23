@@ -18,21 +18,21 @@ export default function ViewCounter() {
     hasCounted.current = true;
     const controller = new AbortController();
 
-    fetch("/api/view-counter", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://hanta-map-backend.onrender.com'}/api/view-counter`, {
       method: "POST",
       cache: "no-store",
       headers: { Accept: "application/json" },
       signal: controller.signal
     })
-      .then((response) => (response.ok ? response.json() : Promise.reject(new Error("Counter unavailable"))))
-      .then((data) => {
-        if (Number.isFinite(data.count)) {
-          setCount(data.count);
-        }
-      })
-      .catch(() => {
-        setCount(0);
-      });
+    .then((response) => (response.ok ? response.json() : Promise.reject(new Error("Counter unavailable"))))
+    .then((data) => {
+      if (Number.isFinite(data.count)) {
+        setCount(data.count);
+      }
+    })
+    .catch(() => {
+      setCount(0);
+    });
 
     return () => controller.abort();
   }, []);
